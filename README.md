@@ -3,6 +3,10 @@ This is the **official** app for the HeySaylor api service. Currently at v0.2, f
 - logging in 
 - and out (!!)
 - listing all saylor data
+
+## v0.3 Enhancements
+Currently in negotiations for the next sprint.
+
 ## Project setup
 ```
 npm install
