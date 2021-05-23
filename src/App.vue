@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <Header />
+    <div v-if='signedIn'>
+      <Saylors />
+    </div>
+    <Footer />
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from "./components/Header.vue";
+import Saylors from "./components/Saylors.vue";
+import Footer from "./components/Footer.vue";
+
+/*
+ * Need this to access Vuex store
+ */
+//import { mapGetters } from "vuex";
+import {mapGetters} from 'vuex'
 
 export default {
-  name: 'App',
+  name: "App",
+//  computed: {
+    /*
+     * have to do with accessing the Vuex store
+     */
+//    ...mapGetters(["signedIn"]),
+//  },
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    Saylors,
+    Footer,
+  },
+  computed: {
+    ...mapGetters(['signedIn']),
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>
