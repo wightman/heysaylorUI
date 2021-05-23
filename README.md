@@ -1,5 +1,8 @@
-# uivuetify
-
+# heysaylorUI
+This is the **official** app for the HeySaylor api service. Currently at v0.2, functionality is limited to 
+- logging in 
+- and out (!!)
+- listing all saylor data
 ## Project setup
 ```
 npm install
