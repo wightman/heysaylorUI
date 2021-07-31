@@ -51,37 +51,29 @@ export default {
     async logout () {
       this.loading = true;
       axios
-      .delete(process.env.BASE_URL+"/sessions",)
-      this.updateSignIn(false);
-      this.updateUser( {
-        userName: "", 
-        userId: -1, 
-        userEmail: "",
+      .delete(process.env.VUE_APP_BASE_URL+"/sessions",)
+      .then(response => {
+        if (response.status == 204 || response.status == 403) {
+          this.updateSignIn(false);
+          this.updateUser( {
+            userName: "", 
+            userId: -1, 
+            userEmail: "",
+          })
+        }
+      })  
+      .catch(e => {
+        alert("Unable to logout on the server. Not sure what to do about that, but you're logged out here.");
+          this.userName = "";
+          this.password = "";
+          console.log(e);
+          this.loading = false;
       });
+
       this.loading = false;
     },
   },
 };
-/*    logout: function () {
-      this.axios
-        .delete(
-          "http://192.168.2.118:8000/sessions",
-          { withCredentials: true },
-          {}
-        )
-        .then((response) => {
-          alert(response.status);
-          this.user = {
-            userName: "",
-            userEmail: "",
-            userId: null,
-          };
-          this.updateUser;
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    },*/
 
 </script>
 

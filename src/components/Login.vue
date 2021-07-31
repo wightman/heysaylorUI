@@ -75,10 +75,8 @@ export default {
 
   //    await new Promise(resolve => setTimeout(resolve, 3000));
     if (this.userName != "" && this.password != "") {
-//        let url = serviceURL.concat('/sessions');
-//        alert(url);
         axios
-        .post(process.env.BASE_URL+"/sessions",{}, {
+        .post(process.env.VUE_APP_BASE_URL+"/sessions",{}, {
           auth: {
             "username": this.userName,
             "password": this.password
