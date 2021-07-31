@@ -123,7 +123,7 @@ export default {
     async getSaylors() {
       this.loading = true;
         axios
-        .get(process.env.BASE_URL+"/saylors")
+        .get(process.env.VUE_APP_BASE_URL+"/saylors")
         .then(response => {
           if (response.status == 200) {
             this.saylors = response.data;
@@ -135,6 +135,7 @@ export default {
         })
         .catch(e => {
           alert("Unable to load saylors: "+e);
+          alert(process.env.VUE_APP_BASE_URL);
         });
       this.loading = false;
     },

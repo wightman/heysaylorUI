@@ -5,7 +5,7 @@ This is the **official** app for the HeySaylor api service. Currently at v0.2, f
 - listing all saylor data
 
 ## v0.3 Enhancements
-Currently in negotiations for the next sprint.
+Load saylor's will records as pdf document of images
 
 ## Project setup
 ```
