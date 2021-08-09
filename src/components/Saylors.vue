@@ -41,6 +41,14 @@
               <strong>Notes:</strong> {{ item.notes }}<br/> 
               <strong>Created:</strong> {{ item.creationDate }} by {{ item.createdBy }}<br/> 
               <strong>Modified:</strong> {{ item.lastModified }}
+              <div v-if="item.documentName">
+                <v-btn 
+                  class="my-4 x-small"
+                  v-bind:href="'/saylors/'+item.saylorId+'/wills/1'"
+                  target="_blank">
+                  View Will
+                </v-btn>
+              </div>
               </td>
           </template>
       </v-data-table>
