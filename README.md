@@ -5,7 +5,10 @@ This is the **official** app for the HeySaylor api service. Currently at v0.2, f
 - listing all saylor data
 
 ## v0.3 Enhancements
-Load saylor's will records as pdf document of images
+Display existing will records for saylor as pdf document
+
+## v0.5 Enhancements
+Upload of will document (pdf) records for saylors. Also reorganized presentation of v0.3/v0.4 functionality.
 
 ## Project setup
 ```
