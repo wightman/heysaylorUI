@@ -15,42 +15,92 @@
       ></v-text-field>
       </v-card-title>
       <v-data-table
-          :loading="loading"
-          loading-text="Saylors currently boarding..."
-          :headers="headers"
-          :items="saylors"
-          :search="search"
-          :single-expand="singleExpand"
-          :expanded.sync="expanded"
-          item-key="saylorId"
-          show-expand
-          class="elevation-1"
+        :loading="loading"
+        loading-text="Saylors currently boarding..."
+        :headers="headers"
+        :items="saylors"
+        :search="search"
+        :single-expand="singleExpand"
+        :expanded.sync="expanded"
+        item-key="saylorId"
+        show-expand
+        class="elevation-1"
       >
-          <template v-slot:top>
-              <v-toolbar flat>
-              <v-spacer></v-spacer>
-              <v-switch
-                  v-model="singleExpand"
-                  label="Expand All/One"
-                  class="mt-2"
-              ></v-switch>
-              </v-toolbar>
-          </template>
-          <template v-slot:expanded-item="{ headers, item }">
-              <td :colspan="headers.length">
-              <strong>Notes:</strong> {{ item.notes }}<br/> 
-              <strong>Created:</strong> {{ item.creationDate }} by {{ item.createdBy }}<br/> 
-              <strong>Modified:</strong> {{ item.lastModified }}
-              <div v-if="item.documentName">
-                <v-btn 
-                  class="my-4 x-small"
-                  v-bind:href="'/saylors/'+item.saylorId+'/wills/1'"
-                  target="_blank">
-                  View Will
-                </v-btn>
-              </div>
-              </td>
-          </template>
+        <template v-slot:top>
+          <v-toolbar flat>
+          <v-spacer></v-spacer>
+          <v-switch
+              v-model="singleExpand"
+              label="Expand All/One"
+              class="mt-2"
+          >
+          </v-switch>
+          </v-toolbar>
+        </template>
+        <template v-slot:expanded-item="{ headers, item }">
+          <td :colspan="headers.length">
+            <v-container>
+              <v-row>
+                <v-col
+                  ma-4
+                  cols="5"
+                >
+                  <h3>Meta Data</h3>
+                  <ul style="list-style-type:none;">
+                    <li>
+                      <strong>Notes:</strong> {{ item.notes }}<br/> 
+                    </li>
+                    <li>
+                      <strong>Created:</strong> {{ item.creationDate }} by {{ item.createdBy }}<br/> 
+                    </li>
+                    <li>
+                      <strong>Modified:</strong> {{ item.lastModified }}
+                    </li>
+                  </ul>
+                </v-col>
+                <div v-if="item.dateOfWill">
+                  <h3>Wills</h3>
+                  <div v-if="item.documentName">
+                    <v-col
+                      ma-2
+                    >
+                      <p>Click to view
+                        <ul style="list-style-type:none;">
+                          <li>
+                            <v-btn 
+                              plain x-small
+                              v-bind:href="'/saylors/'+item.saylorId+'/wills/1'"
+                              target="_blank">
+                              <v-icon x-small>
+                                mdi-skull-crossbones
+                              </v-icon>
+                              {{item.documentName}}
+                            </v-btn>
+                          </li>
+                        </ul>
+                      </p>
+                    </v-col>
+                  </div>
+                  <div v-else>
+                    <v-col
+                      ma-2
+                    >
+                      <p>Click to add
+                        <ul style="list-style-type:none;">
+                          <li>
+                            <UploadWill
+                              :saylor="item"
+                            />
+                          </li>
+                        </ul>
+                      </p>
+                    </v-col>
+                  </div>
+                </div>
+              </v-row>
+            </v-container>
+          </td>
+        </template>
       </v-data-table>
     </v-card>
   </div>
@@ -58,9 +108,12 @@
 
 <script>
 import axios from 'axios';
-
+import UploadWill from "./UploadWill.vue";
 export default {
   name: "Saylors",
+  components: {
+    UploadWill,
+   },
   data () {
     return {
       loading: false,
@@ -147,7 +200,7 @@ export default {
         });
       this.loading = false;
     },
-  }
+  },
 };
 </script>
 
