@@ -58,7 +58,7 @@
                     </li>
                   </ul>
                 </v-col>
-                <div v-if="item.dateOfWill">
+                <div v-if="item.dateOfProbate">
                   <h3>Wills</h3>
                   <div v-if="item.documentName">
                     <v-col
@@ -69,7 +69,7 @@
                           <li>
                             <v-btn 
                               plain x-small
-                              v-bind:href="'/saylors/'+item.saylorId+'/wills/1'"
+                              v-bind:href="'/saylors/'+item.saylorId+'/willdocs/1'"
                               target="_blank">
                               <v-icon x-small>
                                 mdi-skull-crossbones

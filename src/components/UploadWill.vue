@@ -24,7 +24,7 @@
         @drop="drop"
       >
         <v-card-title>
-          Will for {{ this.saylorName }}, {{ this.dateOfWill }}
+          Will for {{ this.saylorName }}, {{ this.dateOfProbate }}
         </v-card-title>
         <form
           @submit.prevent="submit"
@@ -44,7 +44,7 @@
           <!-- Data that needs to go in the query string, 
             provided by the prop -->
           <input type="hidden" name="saylorName" v-model="saylorName" />
-          <input type="hidden" name="dateOfWill" v-model="dateOfWill" />
+          <input type="hidden" name="dateOfProbate" v-model="dateOfProbate" />
           <div class="d-flex flex-row-reverse">
             <v-expand-x-transition>
               <v-btn
@@ -93,15 +93,15 @@ export default {
       willDialog: false,
       file: null,
       willFile: null,
-      dateOfWill: null,
+      dateOfProbate: null,
       saylorName: null,
       url: null,
     };
   },
   mounted: function() {
     this.saylorName = this.saylor.nameLast+'-'+this.saylor.nameFirst;
-    this.dateOfWill = this.saylor.dateOfWill;
-    this.url = '/saylors/'+this.saylor.saylorId+'/wills';
+    this.dateOfProbate = this.saylor.dateOfProbate;
+    this.url = '/saylors/'+this.saylor.saylorId+'/willdocs';
   },
   methods: {
     onChange(e) {
@@ -131,7 +131,7 @@ export default {
       const formData = new FormData();
       formData.append('fileb', this.file);
       formData.append('saylorName', this.saylorName);
-      formData.append('dateOfWill', this.dateOfWill);
+      formData.append('dateOfProbate', this.dateOfProbate);
       
       let config = { headers: { 'Content-Type': 'multipart/form-data' } };
       await axios.post(this.url, formData, config)
@@ -149,7 +149,7 @@ export default {
         });
       this.willDialog = false;
       this.saylorName = null;
-      this.dateOfWill = null;
+      this.dateOfProbate = null;
       this.saylor.documentName = this.willFile;
     },
   },

@@ -1,14 +1,12 @@
 # heysaylorUI
-This is the **official** app for the HeySaylor api service. Currently at v0.2, functionality is limited to 
-- logging in 
-- and out (!!)
-- listing all saylor data
+This is the **official** app for the HeySaylor api service. 
+
+## v0.4 Enhancements
+Upload of will document (pdf) records for saylors. Also reorganized presentation of Saylor metadata to allow uploading/listing of will files.
 
 ## v0.3 Enhancements
-Display existing will records for saylor as pdf document
+Display existing will record for saylor as pdf document. Wills are identified as <lastName>-<firstName>-<saylorId>-<willNum>, but at least for now only the first will is available.
 
-## v0.5 Enhancements
-Upload of will document (pdf) records for saylors. Also reorganized presentation of v0.3/v0.4 functionality.
 
 ## Project setup
 ```
