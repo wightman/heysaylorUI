@@ -8,7 +8,7 @@
         <v-img
           src="../assets/EICShip.png"
         ></v-img>
-      </v-col>rr
+      </v-col>
       <v-col cols="9">
         <v-card-title>
           Hey Saylor!
